@@ -1,0 +1,122 @@
+name: Create Mobile Bolt Structure
+
+on: 
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  create-structure:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3.2.0
+
+    - name: Create folder structure
+      run: |
+        # Root project files
+        [ -e package.json ] || touch package.json
+        [ -e tsconfig.json ] || touch tsconfig.json
+        [ -e vite.config.ts ] || touch vite.config.ts
+        [ -e README.md ] || touch README.md
+        [ -e CONTRIBUTING.md ] || touch CONTRIBUTING.md
+        [ -e LICENSE ] || touch LICENSE
+        [ -e .gitignore ] || touch .gitignore
+        [ -e .env.example ] || touch .env.example
+
+        # App structure
+        mkdir -p app/components/human/header
+        mkdir -p app/components/human/sidebar
+        mkdir -p app/components/human/ui
+        
+        mkdir -p app/components/ai/chat
+        mkdir -p app/components/ai/editor/codemirror
+        mkdir -p app/components/ai/editor/mobile
+        mkdir -p app/components/ai/workbench/terminal
+        mkdir -p app/components/ai/workbench/mobile-preview
+        
+        mkdir -p app/components/shared
+
+        # Create component files
+        [ -e app/components/human/header/Header.tsx ] || touch app/components/human/header/Header.tsx
+        [ -e app/components/human/header/HeaderActionButtons.client.tsx ] || touch app/components/human/header/HeaderActionButtons.client.tsx
+        
+        [ -e app/components/ai/chat/BaseChat.tsx ] || touch app/components/ai/chat/BaseChat.tsx
+        [ -e app/components/ai/chat/AssistantMessage.tsx ] || touch app/components/ai/chat/AssistantMessage.tsx
+        [ -e app/components/ai/chat/UserMessage.tsx ] || touch app/components/ai/chat/UserMessage.tsx
+        
+        [ -e app/components/shared/FileTree.tsx ] || touch app/components/shared/FileTree.tsx
+        [ -e app/components/shared/Preview.tsx ] || touch app/components/shared/Preview.tsx
+
+        # Lib structure
+        mkdir -p app/lib/runtime/human
+        mkdir -p app/lib/runtime/ai
+        mkdir -p app/lib/stores/human
+        mkdir -p app/lib/stores/ai
+        mkdir -p app/lib/stores/shared
+        mkdir -p app/lib/compute/pool
+        mkdir -p app/lib/compute/contracts
+        mkdir -p app/lib/hooks
+        mkdir -p app/lib/persistence
+        mkdir -p app/lib/webcontainer
+
+        # Create lib files
+        [ -e app/lib/runtime/human/mobile-runtime.ts ] || touch app/lib/runtime/human/mobile-runtime.ts
+        [ -e app/lib/runtime/ai/context-tracker.ts ] || touch app/lib/runtime/ai/context-tracker.ts
+        
+        [ -e app/lib/stores/human/mobile-state.ts ] || touch app/lib/stores/human/mobile-state.ts
+        [ -e app/lib/stores/ai/chat.ts ] || touch app/lib/stores/ai/chat.ts
+        [ -e app/lib/stores/shared/files.ts ] || touch app/lib/stores/shared/files.ts
+        
+        [ -e app/lib/compute/pool/thread-manager.ts ] || touch app/lib/compute/pool/thread-manager.ts
+        [ -e app/lib/compute/contracts/resource-agreement.ts ] || touch app/lib/compute/contracts/resource-agreement.ts
+
+        # Routes structure
+        mkdir -p app/routes/mobile
+        [ -e app/routes/_index.tsx ] || touch app/routes/_index.tsx
+        [ -e app/routes/mobile/preview.tsx ] || touch app/routes/mobile/preview.tsx
+
+        # Styles structure
+        mkdir -p app/styles/components
+        [ -e app/styles/index.scss ] || touch app/styles/index.scss
+        [ -e app/styles/variables.scss ] || touch app/styles/variables.scss
+
+        # Types structure
+        mkdir -p app/types
+        [ -e app/types/actions.ts ] || touch app/types/actions.ts
+        [ -e app/types/mobile.ts ] || touch app/types/mobile.ts
+
+        # Utils structure
+        mkdir -p app/utils
+        [ -e app/utils/mobile.ts ] || touch app/utils/mobile.ts
+        [ -e app/utils/compute.ts ] || touch app/utils/compute.ts
+
+        # Sharing structure
+        mkdir -p sharing/policies/attribution
+        mkdir -p sharing/policies/privacy
+        mkdir -p sharing/interfaces/human-ai
+        mkdir -p sharing/interfaces/compute
+
+        [ -e sharing/policies/attribution/policy.ts ] || touch sharing/policies/attribution/policy.ts
+        [ -e sharing/policies/privacy/policy.ts ] || touch sharing/policies/privacy/policy.ts
+        [ -e sharing/interfaces/human-ai/boundaries.ts ] || touch sharing/interfaces/human-ai/boundaries.ts
+        [ -e sharing/interfaces/compute/agreements.ts ] || touch sharing/interfaces/compute/agreements.ts
+
+        # Public assets
+        mkdir -p public
+        [ -e public/favicon.svg ] || touch public/favicon.svg
+        [ -e public/logo.svg ] || touch public/logo.svg
+
+        # Functions
+        mkdir -p functions
+        [ -e functions/[[path]].ts ] || touch functions/[[path]].ts
+
+    - name: Commit changes
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add .
+        git commit -m "Create initial Mobile Bolt folder structure"
+        git push
