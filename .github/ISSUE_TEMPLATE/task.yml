@@ -1,0 +1,153 @@
+name: Development Task
+description: Create a specific development task or technical work item
+title: "[TASK] "
+labels: ["task", "development"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Create a specific development task for Mobile Bolt. This template is for actionable work items that contribute to the overall project goals.
+
+  - type: dropdown
+    id: task-type
+    attributes:
+      label: Task Type
+      description: What type of development task is this?
+      options:
+        - Feature Implementation
+        - Bug Fix
+        - Infrastructure Setup
+        - Documentation
+        - Testing
+        - Performance Optimization
+        - Code Refactoring
+        - UI/UX Improvement
+        - Integration Work
+        - Research & Investigation
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: What is the priority of this task?
+      options:
+        - P0 - Critical (blocks release)
+        - P1 - High (important for user experience)
+        - P2 - Medium (nice to have)
+        - P3 - Low (future improvement)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: Complexity
+      description: How complex is this task?
+      options:
+        - XS - 1-2 hours
+        - S - 2-4 hours  
+        - M - 1-2 days
+        - L - 3-5 days
+        - XL - 1+ weeks
+    validations:
+      required: true
+
+  - type: textarea
+    id: task-description
+    attributes:
+      label: Task Description
+      description: Detailed description of what needs to be done
+      placeholder: "This task involves implementing..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: Specific, measurable criteria that define when this task is complete
+      placeholder: |
+        - [ ] Criterion 1 is met
+        - [ ] Criterion 2 is satisfied
+        - [ ] Tests are passing
+        - [ ] Documentation is updated
+    validations:
+      required: true
+
+  - type: textarea
+    id: technical-requirements
+    attributes:
+      label: Technical Requirements
+      description: Technical specifications, APIs to use, patterns to follow
+      placeholder: "Technical details, constraints, and requirements..."
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: What other tasks or resources does this depend on?
+      placeholder: "This task depends on... This task blocks..."
+
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Development Phase
+      description: Which development phase does this task belong to?
+      options:
+        - Phase 1 - Foundation & Infrastructure
+        - Phase 2 - Core AI Integration
+        - Phase 3 - Mobile Development Environment
+        - Phase 4 - Device Preview & Testing
+        - Phase 5 - Deployment & Sharing
+        - Phase 6 - Advanced Features
+        - Phase 7 - Performance & Scale
+        - Ongoing - Maintenance
+
+  - type: dropdown
+    id: component-area
+    attributes:
+      label: Component Area
+      description: Which part of the system does this task affect?
+      multiple: true
+      options:
+        - Frontend UI Components
+        - AI Integration & Chat
+        - Code Editor & Syntax
+        - Mobile Preview System
+        - Build & Terminal
+        - State Management
+        - Routing & Navigation
+        - Database & Persistence
+        - Authentication & Security
+        - Testing Framework
+        - CI/CD Pipeline
+        - Documentation
+
+  - type: textarea
+    id: testing-strategy
+    attributes:
+      label: Testing Strategy
+      description: How should this task be tested?
+      placeholder: |
+        - Unit tests for...
+        - Integration tests for...
+        - Manual testing steps...
+        - Edge cases to consider...
+
+  - type: checkboxes
+    id: definition-of-done
+    attributes:
+      label: Definition of Done
+      description: Standard checklist for task completion
+      options:
+        - label: Code is written and reviewed
+        - label: Tests are written and passing
+        - label: Documentation is updated
+        - label: Feature works in development environment
+        - label: No new console errors or warnings
+        - label: Meets accessibility standards
+        - label: Mobile responsiveness verified
+        - label: Performance impact assessed
