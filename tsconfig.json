@@ -7,12 +7,17 @@
     "**/.client/**/*.ts", 
     "**/.client/**/*.tsx"
   ],
+  "exclude": [
+    "node_modules",
+    "app/_disabled"
+  ],
   "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "ES6"],
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "isolatedModules": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
-    "moduleResolution": "node",
+    // Using 'bundler' for Vite/Remix compatibility - requires Node.js 20.15.1+
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "target": "ES2022",
     "strict": true,
@@ -23,6 +28,8 @@
     "paths": {
       "~/*": ["./app/*"]
     },
-    "noEmit": true
+    "noEmit": true,
+    "module": "ESNext",
+    "types": ["@remix-run/node", "vite/client"]
   }
 }

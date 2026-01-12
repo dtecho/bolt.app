@@ -5,7 +5,7 @@ import { type ActionCallbackData, type ArtifactCallbackData } from './message-pa
 export type MobilePlatform = 'ios' | 'android' | 'both';
 export type MobileActionType = 'build' | 'run' | 'debug' | 'asset' | 'config';
 
-interface MobileActionData extends ActionCallbackData {
+export interface MobileActionData extends ActionCallbackData {
   platform: MobilePlatform;
   actionType: MobileActionType;
   options?: {
@@ -16,7 +16,7 @@ interface MobileActionData extends ActionCallbackData {
   };
 }
 
-interface MobileArtifactData extends ArtifactCallbackData {
+export interface MobileArtifactData extends ArtifactCallbackData {
   platform: MobilePlatform;
   artifactType: 'component' | 'screen' | 'navigation' | 'style' | 'config';
   dependencies?: string[];

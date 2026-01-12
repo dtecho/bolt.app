@@ -41,11 +41,12 @@ export const selectedFile = computed(store, (state) => state.selectedFile);
 export const unsavedFiles = computed(store, (state) => state.unsavedFiles);
 export const previews = computed(store, (state) => state.previews);
 
-// Actions
+// Separate atoms for workbench controls
 export const showWorkbench = atom(false);
 export const showTerminal = atom(false);
 export const currentView = atom<WorkbenchViewType>('code');
 export const platformType = atom<PlatformType>('web');
+export const files = atom<FileMap>({});
 
 export const setDocuments = (files: FileMap) => {
   const documents = new Map<string, EditorDocument>();
@@ -92,6 +93,32 @@ export const setCurrentDocumentContent = (content: string) => {
   }
 };
 
+export const setCurrentDocumentScrollPosition = (position: { line: number; ch: number }) => {
+  const state = store.get();
+  const { currentDocument } = state;
+  
+  if (currentDocument) {
+    const updatedDocument = { ...currentDocument, scroll: position };
+    const documents = new Map(state.documents);
+    documents.set(currentDocument.filePath, updatedDocument);
+    
+    store.setKey('documents', documents);
+    store.setKey('currentDocument', updatedDocument);
+  }
+};
+
+export const saveCurrentDocument = async () => {
+  const state = store.get();
+  const { currentDocument, unsavedFiles: unsaved } = state;
+  
+  if (currentDocument && unsaved.has(currentDocument.filePath)) {
+    // Simulate file save - in real implementation, this would call WebContainer API
+    const unsavedFiles = new Set(unsaved);
+    unsavedFiles.delete(currentDocument.filePath);
+    store.setKey('unsavedFiles', unsavedFiles);
+  }
+};
+
 export const setPlatformType = (platform: PlatformType) => {
   store.setKey('platformType', platform);
   if (platform === 'mobile') {
@@ -113,9 +140,16 @@ export const workbenchStore = {
   showTerminal,
   currentView,
   platformType,
+  files,
+  previews,
+  selectedFile,
+  currentDocument,
+  unsavedFiles,
   setDocuments,
   setSelectedFile,
   setCurrentDocumentContent,
+  setCurrentDocumentScrollPosition,
+  saveCurrentDocument,
   setPlatformType,
   toggleWorkbench,
   toggleTerminal,
