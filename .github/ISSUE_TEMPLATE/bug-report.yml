@@ -1,0 +1,159 @@
+name: Bug Report
+description: Report a bug or issue with Mobile Bolt
+title: "[BUG] "
+labels: ["bug", "needs-triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug! Please provide detailed information to help us reproduce and fix the issue.
+
+  - type: dropdown
+    id: bug-category
+    attributes:
+      label: Bug Category
+      description: Which area of Mobile Bolt is affected?
+      options:
+        - AI Chat & Code Generation
+        - Code Editor & Syntax Highlighting
+        - Mobile Preview & Device Connection
+        - Build System & Terminal
+        - File Management & Project Structure
+        - User Interface & Navigation
+        - Performance & Loading
+        - Authentication & User Management
+        - Deployment & Publishing
+        - Third-party Integrations
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How severe is this bug?
+      options:
+        - Critical - Application crashes or major feature broken
+        - High - Important feature not working as expected
+        - Medium - Minor feature issue or workaround available
+        - Low - Cosmetic issue or minor inconvenience
+    validations:
+      required: true
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is
+      placeholder: "The application does X when it should do Y..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: Detailed steps to reproduce the behavior
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Enter '...' in the input field
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: What you expected to happen
+      placeholder: "I expected the application to..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: Actual Behavior
+      description: What actually happened
+      placeholder: "Instead, the application did..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: error-messages
+    attributes:
+      label: Error Messages
+      description: Any error messages, console logs, or stack traces
+      render: text
+      placeholder: "Paste any error messages or console output here..."
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      description: Which browser are you using?
+      multiple: true
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Other (specify in additional context)
+
+  - type: dropdown
+    id: device-type
+    attributes:
+      label: Device Type
+      description: What type of device are you using?
+      options:
+        - Desktop/Laptop
+        - Tablet
+        - Mobile Phone
+        - Multiple devices
+
+  - type: dropdown
+    id: mobile-platform
+    attributes:
+      label: Mobile Platform (if applicable)
+      description: If testing mobile features, which platform?
+      multiple: true
+      options:
+        - iOS (iPhone)
+        - iOS (iPad)
+        - Android Phone
+        - Android Tablet
+        - Not applicable
+
+  - type: textarea
+    id: environment-details
+    attributes:
+      label: Environment Details
+      description: Additional environment information
+      placeholder: |
+        - OS: [e.g. iOS 16, Android 13, Windows 11, macOS 13]
+        - Browser version: [e.g. Chrome 118.0.5993.88]
+        - Mobile device: [e.g. iPhone 14 Pro, Samsung Galaxy S23]
+        - App version/commit: [if known]
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Screenshots, videos, or any other relevant information
+      placeholder: "Add any other context about the problem here, including screenshots or screen recordings if helpful."
+
+  - type: checkboxes
+    id: troubleshooting
+    attributes:
+      label: Troubleshooting Attempted
+      description: What have you tried to resolve this issue?
+      options:
+        - label: Refreshed the page
+        - label: Cleared browser cache and cookies
+        - label: Tried in incognito/private mode
+        - label: Tested in a different browser
+        - label: Checked for browser extensions interference
+        - label: Verified internet connection is stable

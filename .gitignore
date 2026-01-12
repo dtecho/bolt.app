@@ -1,0 +1,139 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Production builds
+/build
+/dist
+/.remix
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# ESLint cache
+.eslintcache
+
+# Optional npm cache directory
+.npm
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Vite cache
+.vite
+
+# Next.js build files
+.next
+out
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Storybook build outputs
+.out
+.storybook-out
+
+# Temporary folders
+tmp/
+temp/
+
+# Editor directories and files
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# IDE - WebStorm
+.idea/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime
+.serverless/
+.terraform/
+
+# Mobile specific
+*.ipa
+*.apk
+*.aab
+
+# Expo
+.expo/
+.expo-shared/
+
+# Testing
+.vitest/
+
+# Build outputs
+.remix/
+build/
+
+# WebContainer files
+.webcontainer/
+
+# AI artifacts cache
+.ai-cache/
+
+# Sharing policies cache
+.policies-cache/

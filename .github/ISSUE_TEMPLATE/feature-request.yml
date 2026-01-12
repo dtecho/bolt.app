@@ -1,0 +1,84 @@
+name: Feature Request
+description: Suggest a new feature for Mobile Bolt
+title: "[FEATURE] "
+labels: ["enhancement", "feature-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a new feature for Mobile Bolt! Please provide detailed information to help us understand and evaluate your request.
+
+  - type: dropdown
+    id: feature-category
+    attributes:
+      label: Feature Category
+      description: Which area of Mobile Bolt does this feature relate to?
+      options:
+        - AI Integration & Chat Interface
+        - Mobile Development Environment
+        - Code Editor & Syntax
+        - Device Preview & Testing
+        - Build & Deployment
+        - User Interface & Experience
+        - Performance & Optimization
+        - Community & Sharing
+        - Documentation & Onboarding
+        - Third-party Integrations
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority Level
+      description: How important is this feature?
+      options:
+        - Critical - Required for core functionality
+        - High - Important for user experience
+        - Medium - Nice to have improvement
+        - Low - Future enhancement
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: Problem Statement
+      description: What problem does this feature solve? What user need does it address?
+      placeholder: "As a mobile developer, I need... because..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution-description
+    attributes:
+      label: Proposed Solution
+      description: Describe your proposed solution in detail
+      placeholder: "The feature should work by..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: What conditions must be met for this feature to be considered complete?
+      placeholder: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+        - [ ] Criterion 3
+
+  - type: dropdown
+    id: mobile-platform
+    attributes:
+      label: Mobile Platform
+      description: Which mobile platforms should this feature support?
+      multiple: true
+      options:
+        - iOS
+        - Android
+        - Both iOS and Android
+        - Platform-agnostic
+        - Web preview only
