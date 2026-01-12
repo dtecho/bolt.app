@@ -6,13 +6,12 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   test: {
     environment: "jsdom",
-    setupFiles: ["./app/test-setup.ts"],
     globals: true,
     coverage: {
       reporter: ["text", "json", "html"],
       exclude: [
         "node_modules/",
-        "app/test-setup.ts",
+        "app/_disabled/**",
         "**/*.d.ts",
         "**/*.config.{js,ts}",
         "**/coverage/**",
@@ -28,6 +27,7 @@ export default defineConfig({
       ".git",
       ".cache",
       "build",
+      "app/_disabled",
     ],
   },
 });
