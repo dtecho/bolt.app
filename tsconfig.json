@@ -16,6 +16,7 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
+    // Using 'bundler' for Vite/Remix compatibility - requires Node.js 20.15.1+
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "target": "ES2022",

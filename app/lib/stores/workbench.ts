@@ -41,11 +41,12 @@ export const selectedFile = computed(store, (state) => state.selectedFile);
 export const unsavedFiles = computed(store, (state) => state.unsavedFiles);
 export const previews = computed(store, (state) => state.previews);
 
-// Actions
+// Separate atoms for workbench controls
 export const showWorkbench = atom(false);
 export const showTerminal = atom(false);
 export const currentView = atom<WorkbenchViewType>('code');
 export const platformType = atom<PlatformType>('web');
+export const files = atom<FileMap>({});
 
 export const setDocuments = (files: FileMap) => {
   const documents = new Map<string, EditorDocument>();
@@ -132,9 +133,6 @@ export const toggleWorkbench = (show?: boolean) => {
 export const toggleTerminal = (show?: boolean) => {
   showTerminal.set(show ?? !showTerminal.get());
 };
-
-// Create a files atom
-export const files = atom<FileMap>({});
 
 export const workbenchStore = {
   ...store,
