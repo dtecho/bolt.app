@@ -92,6 +92,32 @@ export const setCurrentDocumentContent = (content: string) => {
   }
 };
 
+export const setCurrentDocumentScrollPosition = (position: { line: number; ch: number }) => {
+  const state = store.get();
+  const { currentDocument } = state;
+  
+  if (currentDocument) {
+    const updatedDocument = { ...currentDocument, scroll: position };
+    const documents = new Map(state.documents);
+    documents.set(currentDocument.filePath, updatedDocument);
+    
+    store.setKey('documents', documents);
+    store.setKey('currentDocument', updatedDocument);
+  }
+};
+
+export const saveCurrentDocument = async () => {
+  const state = store.get();
+  const { currentDocument, unsavedFiles: unsaved } = state;
+  
+  if (currentDocument && unsaved.has(currentDocument.filePath)) {
+    // Simulate file save - in real implementation, this would call WebContainer API
+    const unsavedFiles = new Set(unsaved);
+    unsavedFiles.delete(currentDocument.filePath);
+    store.setKey('unsavedFiles', unsavedFiles);
+  }
+};
+
 export const setPlatformType = (platform: PlatformType) => {
   store.setKey('platformType', platform);
   if (platform === 'mobile') {
@@ -107,15 +133,25 @@ export const toggleTerminal = (show?: boolean) => {
   showTerminal.set(show ?? !showTerminal.get());
 };
 
+// Create a files atom
+export const files = atom<FileMap>({});
+
 export const workbenchStore = {
   ...store,
   showWorkbench,
   showTerminal,
   currentView,
   platformType,
+  files,
+  previews,
+  selectedFile,
+  currentDocument,
+  unsavedFiles,
   setDocuments,
   setSelectedFile,
   setCurrentDocumentContent,
+  setCurrentDocumentScrollPosition,
+  saveCurrentDocument,
   setPlatformType,
   toggleWorkbench,
   toggleTerminal,
