@@ -10,12 +10,9 @@ import {
 } from '@remix-run/react';
 import type { LinksFunction } from '@remix-run/node';
 import { ToastContainer } from 'react-toastify';
-import styles from './styles/index.css?url';
 import 'react-toastify/dist/ReactToastify.css';
 
-export const links: LinksFunction = () => [
-  { rel: 'stylesheet', href: styles },
-];
+export const links: LinksFunction = () => [];
 
 export default function App() {
   return (

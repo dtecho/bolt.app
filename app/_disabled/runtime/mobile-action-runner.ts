@@ -1,9 +1,9 @@
 // app/lib/runtime/mobile-action-runner.ts
 
 import type { WebContainer } from '@webcontainer/api';
-import type { MobileActionData, MobilePlatform, MobileActionType } from './mobile-message-parser';
+import type { MobilePlatform, MobileActionType } from './mobile-message-parser';
 
-interface DeviceInfo {
+export interface DeviceInfo {
   id: string;
   name: string;
   platform: MobilePlatform;
@@ -11,12 +11,19 @@ interface DeviceInfo {
   type: 'simulator' | 'emulator' | 'physical';
 }
 
-interface BuildConfig {
+export interface BuildConfig {
   platform: MobilePlatform;
   mode: 'development' | 'production';
   scheme?: string;
   configuration?: string;
   targetDevice?: string;
+}
+
+export interface MobileActionData {
+  actionType: MobileActionType;
+  platform?: MobilePlatform;
+  target?: string;
+  options?: Record<string, any>;
 }
 
 type ActionState = 'pending' | 'running' | 'complete' | 'failed' | 'aborted';
